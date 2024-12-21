@@ -1,0 +1,48 @@
+:root {
+  /* Light mode defaults */
+  --color-primary: var(--color-gray-800);
+  --color-primary-hover: var(--color-gray-900);
+  --color-primary-active: var(--color-gray-950);
+  --color-primary-focus: var(--color-gray-300);
+  --color-button-text: var(--color-gray-50);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+
+    --color-primary: var(--color-gray-100);
+    --color-primary-hover: var(--color-gray-200);
+    --color-primary-active: var(--color-gray-250);
+    --color-primary-focus: var(--color-gray-850);
+    --color-button-text: var(--color-gray-900);
+  }
+}
+
+.button {
+  display: flex;
+  flex: 0 0 auto;
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--border-radius);
+  background-color: var(--color-primary);
+  font-size: var(--font-size-3);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-button-text);
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, outline 0.2s ease;
+
+  &:hover {
+    background-color: var(--color-primary-hover);
+  }
+
+  &:active {
+    background-color: var(--color-primary-active);
+    outline: var(--spacing-1) solid var(--color-primary-active);
+  }
+
+  &:focus {
+    outline: var(--spacing-1) solid var(--color-primary-focus);
+  }
+}

@@ -1,0 +1,62 @@
+:root {
+  /* Light mode */
+  --color-input-bg: #f9fafb; /* Equivalent to Gray-50 */
+  --color-input-bg-hover: #f3f4f6; /* Equivalent to Gray-100 */
+  --color-input-border: #d1d5db; /* Equivalent to Gray-300 */
+  --color-input-border-hover: #9ca3af; /* Equivalent to Gray-400 */
+  --color-input-border-focus: #9ca3af; /* Equivalent to Gray-400 */
+  --color-input-text: #111827; /* Equivalent to Gray-900 */
+
+  /* General */
+  --input-border-width: 1px;
+  --input-radius: 0.375rem;
+  --input-padding-vertical: 0.5rem;
+  --input-padding-horizontal: 1rem;
+  --input-font-size: 1rem;
+  --input-line-height: 1.5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark mode */
+    --color-input-bg: #0f172a; /* Equivalent to Gray-950 */
+    --color-input-bg-hover: #1e293b; /* Equivalent to Gray-800 */
+    --color-input-border: #475569; /* Equivalent to Gray-700 */
+    --color-input-border-hover: #64748b; /* Equivalent to Gray-600 */
+    --color-input-border-focus: #64748b; /* Equivalent to Gray-600 */
+    --color-input-text: #f1f5f9; /* Equivalent to Gray-50 */
+  }
+}
+
+.input {
+  background-color: var(--color-input-bg);
+  border: var(--input-border-width) solid var(--color-input-border);
+  border-radius: var(--input-radius);
+  color: var(--color-input-text);
+  padding: var(--input-padding-vertical) var(--input-padding-horizontal);
+  font-size: var(--input-font-size);
+  line-height: var(--input-line-height);
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  /* Accessibility: Remove default outline and add custom styles */
+  outline: none;
+}
+
+.input:hover {
+  background-color: var(--color-input-bg-hover);
+  border-color: var(--color-input-border-hover);
+}
+
+.input:focus {
+  border-color: var(--color-input-border-focus);
+  box-shadow: 0 0 0 3px rgba(156, 163, 175, 0.5); /* Use semi-transparent focus ring */
+}
+
+.input:disabled {
+  background-color: var(--color-input-bg-hover);
+  color: rgba(17, 24, 39, 0.5); /* Dimmed text color */
+  border-color: var(--color-input-border);
+  cursor: not-allowed;
+  opacity: 0.6;
+}

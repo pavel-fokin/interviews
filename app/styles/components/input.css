@@ -1,0 +1,40 @@
+:root {
+  --color-input-background: var(--color-gray-50);
+  --color-input-background-hover: var(--color-gray-100);
+  --input-border-width: var(--border-width);
+  --color-input-border: var(--color-gray-300);
+  --color-input-border-hover: var(--color-gray-400);
+  --color-input-border-focus: var(--color-gray-400);
+  --color-input-text: var(--color-gray-900);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-input-background: var(--color-gray-950);
+    --color-input-border: var(--color-gray-700);
+    --color-input-text: var(--color-gray-50);
+    --color-input-border-hover: var(--color-gray-600);
+    --color-input-border-focus: var(--color-gray-600);
+  }
+}
+
+.input {
+  background-color: var(--color-input-background);
+  border: var(--input-border-width) solid var(--color-input-border);
+  border-radius: var(--border-radius);
+  color: var(--color-input-text);
+  padding: var(--spacing-2) var(--spacing-4);
+  font-size: var(--font-size-3);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-3);
+  transition: background-color 0.2s ease, outline 0.2s ease;
+
+  &:focus {
+    outline: var(--spacing-1) solid var(--color-input-border);
+  }
+
+  &:hover {
+    border-color: var(--color-input-border-hover);
+  }
+}
+
