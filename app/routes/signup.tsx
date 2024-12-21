@@ -56,25 +56,25 @@ export default function SignUp() {
     <div className="h-screen">
       <header className="flex flex-row items-center justify-between gap-16 p-4 pb-8 sm:p-8">
         <h1 className="sm:text-center leading-tight text-2xl font-light text-gray-800 dark:text-gray-200">
-          <Link to="/">Rewarded Interview</Link>
+          <Link to="/">Fair Interviews</Link>
         </h1>
       </header>
-      <main className="flex flex-col max-w-screen-sm mx-auto items-center justify-center gap-8">
+      <main className="flex flex-col mx-auto max-w-screen-sm items-center justify-center gap-8 p-4 sm:p-8">
         <h1 className="text-center text-gray-800 dark:text-gray-200 text-4xl font-bold">
           Join the movement to get paid for your time in interviews
         </h1>
-        <p className="text-center text-lg text-gray-500 font-regular">
+        <p className="text-center text-lg text-gray-500 dark:text-gray-400 font-regular">
           We’re building a platform to ensure developers are fairly compensated
           for their expertise. Sign up to show your interest and follow updates.
         </p>
         <Form
           method="post"
-          className="flex flex-col min-w-[300px] gap-4"
+          className="flex flex-col w-full sm:max-w-sm gap-4"
           onSubmit={form.handleSubmit(onSubmit)}
         >
           <div className="flex flex-col gap-2">
             <label className="text-sm font-medium" htmlFor="email">
-              Email (required)
+              Email <span className="text-gray-500 dark:text-gray-400 font-normal">(required)</span>
             </label>
             <input
               id="email"
@@ -96,7 +96,7 @@ export default function SignUp() {
           </div>
           <div className="flex flex-col gap-2">
             <label className="text-sm font-medium" htmlFor="name">
-              Name (optional)
+              Name <span className="text-gray-500 dark:text-gray-400 font-normal">(optional)</span>
             </label>
             <input
               id="name"
@@ -118,7 +118,7 @@ export default function SignUp() {
           </div>
           <div className="flex flex-col gap-2">
             <label className="text-sm font-medium" htmlFor="role">
-              Role/Expertise (optional)
+              Role/Expertise <span className="text-gray-500 dark:text-gray-400 font-normal">(optional)</span>
             </label>
             <input
               id="role"
@@ -140,7 +140,7 @@ export default function SignUp() {
           </div>
           <div className="flex flex-col gap-2">
             <label className="text-sm font-medium" htmlFor="linkedin">
-              LinkedIn profile (optional)
+              LinkedIn profile <span className="text-gray-500 dark:text-gray-400 font-normal">(optional)</span>
             </label>
             <input
               id="linkedin"
@@ -165,7 +165,7 @@ export default function SignUp() {
           </div>
         </Form>
         <section className="flex flex-col gap-2 pt-4">
-          <p className="text-sm text-gray-500 font-regular">
+          <p className="text-sm text-gray-500 dark:text-gray-400 font-regular">
             We’re in the early stages of building this platform. Your sign-up
             helps us understand if this idea resonates with developers like you.
             We’ll keep you updated as we progress and give you priority access
