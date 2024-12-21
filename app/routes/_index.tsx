@@ -14,7 +14,7 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <div className="h-screen">
-      <div className="container">
+      <div className="container mx-auto">
         <header className="flex flex-row items-center justify-between gap-16 p-4 sm:p-8 pb-16">
           <h1 className="sm:text-center leading-tight text-2xl font-light text-gray-800 dark:text-gray-200">
             Fair Interviews
@@ -88,7 +88,7 @@ export default function Index() {
         </main>
         <footer className="flex flex-row items-center justify-between gap-16 p-4 sm:p-8">
           <p className="text-center text-gray-800 dark:text-gray-200">
-            &copy; {new Date().getFullYear()} Rewarded Interview
+            &copy; {new Date().getFullYear()} Fair Interviews
           </p>
         </footer>
       </div>

@@ -84,12 +84,12 @@ export default function SignUp() {
               {...form.register('email')}
             />
             {form.formState.errors.email && (
-              <p className="text-sm text-red-500 font-regular">
+              <p className="text-sm text-red-500 dark:text-red-400 font-regular">
                 {form.formState.errors.email.message}
               </p>
             )}
             {actionData?.errors?.email && (
-              <p className="text-sm text-red-500 font-regular">
+              <p className="text-sm text-red-500 dark:text-red-400 font-regular">
                 {actionData.errors.email}
               </p>
             )}
@@ -106,12 +106,12 @@ export default function SignUp() {
               {...form.register('name')}
             />
             {form.formState.errors.name && (
-              <p className="text-sm text-red-500 font-regular">
+              <p className="text-sm text-red-500 dark:text-red-400 font-regular">
                 {form.formState.errors.name.message}
               </p>
             )}
             {actionData?.errors?.name && (
-              <p className="text-sm text-red-500 font-regular">
+              <p className="text-sm text-red-500 dark:text-red-400 font-regular">
                 {actionData.errors.name}
               </p>
             )}
@@ -128,12 +128,12 @@ export default function SignUp() {
               {...form.register('role')}
             />
             {form.formState.errors.role && (
-              <p className="text-sm text-red-500 font-regular">
+              <p className="text-sm text-red-500 dark:text-red-400 font-regular">
                 {form.formState.errors.role.message}
               </p>
             )}
             {actionData?.errors?.role && (
-              <p className="text-sm text-red-500 font-regular">
+              <p className="text-sm text-red-500 dark:text-red-400 font-regular">
                 {actionData.errors.role}
               </p>
             )}
@@ -150,12 +150,12 @@ export default function SignUp() {
               {...form.register('linkedin')}
             />
             {form.formState.errors.linkedin && (
-              <p className="text-sm text-red-500 font-regular">
+              <p className="text-sm text-red-500 dark:text-red-400 font-regular">
                 {form.formState.errors.linkedin.message}
               </p>
             )}
             {actionData?.errors?.linkedin && (
-              <p className="text-sm text-red-500 font-regular">
+              <p className="text-sm text-red-500 dark:text-red-400 font-regular">
                 {actionData.errors.linkedin}
               </p>
             )}
