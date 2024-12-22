@@ -1,6 +1,8 @@
 import type { MetaFunction } from '@remix-run/node';
 import { Link } from '@remix-run/react';
 
+import { CookiesBar } from '@/components/cookies-bar';
+import { ClientOnly } from '@/components/client-only';
 export const meta: MetaFunction = () => {
   return [
     { title: 'Fair Interviews' },
@@ -14,6 +16,9 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <div className="h-screen">
+      <ClientOnly>
+        <CookiesBar />
+      </ClientOnly>
       <div className="container mx-auto">
         <header className="flex flex-row items-center justify-between gap-16 p-4 sm:p-8 pb-16">
           <h1 className="sm:text-center leading-tight text-2xl font-light text-gray-800 dark:text-gray-200">
@@ -31,7 +36,7 @@ export default function Index() {
               Get paid for your time during interviews
             </h1>
             <p className="text-center text-xl text-gray-500 dark:text-gray-400 font-regular">
-              Your time and expertise are valuable. Join a platform and set up
+              Your time and expertise are valuable. Join the platform and set
               rates for your interviews.
             </p>
             <Link className="button" to="/signup">
