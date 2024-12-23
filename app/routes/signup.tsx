@@ -168,7 +168,7 @@ export default function SignUp() {
             )}
           </div>
           <div className="flex flex-col pt-4">
-            <button className="button" disabled={navigation.state === 'submitting'}>Sign up to show interest</button>
+            <button className={`button ${navigation.state === 'submitting' ? 'loading' : ''}`}>Sign up to show interest</button>
           </div>
         </Form>
         <section className="flex flex-col gap-2 pt-4">

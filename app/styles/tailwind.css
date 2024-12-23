@@ -13,12 +13,46 @@ body {
 
 @layer components {
   .button {
-    @apply px-4 py-2 rounded-lg font-medium text-white bg-slate-800 hover:bg-slate-900 focus:ring-4 focus:ring-slate-300 focus:outline-none active:bg-slate-950 transition-all duration-200 ease-in-out shadow-sm;
+    @apply relative px-4 py-2 rounded-lg font-medium text-white bg-slate-800 hover:bg-slate-900 focus:ring-4 focus:ring-slate-300 focus:outline-none active:bg-slate-950 transition-all duration-200 ease-in-out shadow-sm;
+  }
+
+  .button.loading::after {
+    content: '';
+    /* @apply absolute inset-0 m-auto w-4 h-4 border-2 border-t-2 border-gray-200 border-t-white rounded-full animate-spin; */
+    @apply absolute inset-0 m-auto w-6 h-6 rounded-full border-4 border-solid border-gray-200;
+    border-top-color: transparent; /* Makes the spinner more elegant */
+    border-right-color: #ffffff; /* Gives a gradient effect */
+    border-left-color: #ffffff;
+    border-bottom-color: #ffffff;
+    animation: spin 0.6s linear infinite; /* Smooth, fast spin */
+  }
+
+  .button.loading {
+    color: transparent; /* Hides text while spinner is visible */
+    pointer-events: none;
+  }
+
+  /* Keyframes for the spinner animation */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 
   @media (prefers-color-scheme: dark) {
     .button {
-      @apply bg-slate-300 hover:bg-slate-200 focus:ring-slate-600 active:bg-slate-100 text-gray-900;
+      @apply bg-slate-200 hover:bg-slate-100 focus:ring-slate-600 active:bg-slate-200 text-gray-900;
+    }
+
+    .button.loading::after {
+      border-color: #444444; /* Subtle gray for dark mode */
+      border-top-color: transparent;
+      border-right-color: #888888; /* Slightly lighter color for the gradient effect */
+      border-left-color: #888888;
+      border-bottom-color: #888888;
     }
   }
 
