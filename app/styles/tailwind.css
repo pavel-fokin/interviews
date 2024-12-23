@@ -10,3 +10,25 @@ body {
     color-scheme: dark;
   }
 }
+
+@layer components {
+  .button {
+    @apply px-4 py-2 rounded-lg font-medium text-white bg-slate-800 hover:bg-slate-900 focus:ring-4 focus:ring-slate-300 focus:outline-none active:bg-slate-950 transition-all duration-200 ease-in-out shadow-sm;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .button {
+      @apply bg-slate-300 hover:bg-slate-200 focus:ring-slate-600 active:bg-slate-100 text-gray-900;
+    }
+  }
+
+  .input {
+    @apply w-full px-4 py-2 text-base rounded-lg border border-gray-300 bg-gray-50 text-gray-800 placeholder-gray-400 hover:bg-gray-100 hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 shadow-sm transition-all duration-200 ease-in-out;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .input {
+      @apply bg-slate-900 hover:bg-slate-800 focus:ring-slate-600 active:bg-slate-950 text-gray-200 dark:border-gray-700 dark:hover:bg-slate-800 dark:focus:ring-slate-600 dark:focus:border-slate-600;
+    }
+  }
+}

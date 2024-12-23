@@ -1,10 +1,14 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ActionFunctionArgs } from '@remix-run/node';
-import { Form, Link, useActionData, useSubmit, useNavigate } from '@remix-run/react';
+import { Form, Link, redirect, useActionData, useNavigation } from '@remix-run/react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-const SignUpEarlyAccessSchema = z.object({
+import { ClientOnly } from '@/components/client-only';
+import { CookiesBar } from '@/components/cookies-bar';
+import { firestore } from '@/server/firestore.server';
+
+const SignUpEarlySchema = z.object({
   email: z.string().nonempty({ message: "Email is required" }).email(),
   name: z.string().optional(),
   role: z.string().optional(),
@@ -21,38 +25,43 @@ const SignUpEarlyAccessSchema = z.object({
     ),
 });
 
-type SignUpEarlyAccess = z.infer<typeof SignUpEarlyAccessSchema>;
+type SignUpEarlyAccess = z.infer<typeof SignUpEarlySchema>;
 
 export async function action({ request }: ActionFunctionArgs) {
+  console.log('Action function called');
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
 
-  const result = SignUpEarlyAccessSchema.safeParse(data);
+  const result = SignUpEarlySchema.safeParse(data);
   if (!result.success) {
     return Response.json({ errors: result.error.flatten().fieldErrors }, { status: 400 });
   }
 
-  return Response.json({ success: true });
+  const { email, name, role, linkedin } = result.data;
+
+  try {
+    const userRef = firestore.collection('users').doc();
+    await userRef.set({ email, name, role, linkedin });
+    return redirect('/thank-you');
+  } catch (error) {
+    console.error('Error creating user:', error);
+    return Response.json({ error: 'Failed to create user' }, { status: 500 });
+  }
+
 }
 
 export default function SignUp() {
-  const navigate = useNavigate();
-  const submit = useSubmit();
+  const navigation = useNavigation();
   const actionData = useActionData<typeof action>();
   const form = useForm<SignUpEarlyAccess>({
-    resolver: zodResolver(SignUpEarlyAccessSchema),
+    resolver: zodResolver(SignUpEarlySchema),
   });
-
-  const onSubmit = (data: SignUpEarlyAccess) => {
-    submit(data, {
-      method: 'post',
-      action: '/signup',
-    });
-    navigate('/thank-you');
-  };
 
   return (
     <div className="h-screen">
+      <ClientOnly>
+        <CookiesBar />
+      </ClientOnly>
       <header className="flex flex-row items-center justify-between gap-16 p-4 pb-8 sm:p-8">
         <h1 className="sm:text-center leading-tight text-2xl font-light text-gray-800 dark:text-gray-200">
           <Link to="/">Fair Interviews</Link>
@@ -69,7 +78,6 @@ export default function SignUp() {
         <Form
           method="post"
           className="flex flex-col w-full sm:max-w-sm gap-4"
-          onSubmit={form.handleSubmit(onSubmit)}
         >
           <div className="flex flex-col gap-2">
             <label className="text-sm font-medium" htmlFor="email">
@@ -89,7 +97,7 @@ export default function SignUp() {
             )}
             {actionData?.errors?.email && (
               <p className="text-sm text-red-500 dark:text-red-400 font-regular">
-                {actionData.errors.email}
+                {actionData.errors.email[0]}
               </p>
             )}
           </div>
@@ -160,7 +168,7 @@ export default function SignUp() {
             )}
           </div>
           <div className="flex flex-col pt-4">
-            <button className="button" type="submit">Sign up to show interest</button>
+            <button className="button" disabled={navigation.state === 'submitting'}>Sign up to show interest</button>
           </div>
         </Form>
         <section className="flex flex-col gap-2 pt-4">

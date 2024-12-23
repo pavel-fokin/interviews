@@ -3,6 +3,7 @@ import { Link } from '@remix-run/react';
 
 import { CookiesBar } from '@/components/cookies-bar';
 import { ClientOnly } from '@/components/client-only';
+
 export const meta: MetaFunction = () => {
   return [
     { title: 'Fair Interviews' },
