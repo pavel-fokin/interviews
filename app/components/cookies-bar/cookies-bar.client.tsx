@@ -17,7 +17,7 @@ export const CookiesBar = () => {
       <p className="grow text-center text-sm text-gray-500 dark:text-gray-400 font-regular">
         We use cookies to ensure you get the best experience on our website.
       </p>
-      <button className="button" onClick={handleAccept}>Accept</button>
+      <button className="button" onClick={handleAccept}>OK</button>
     </div>
   );
 }

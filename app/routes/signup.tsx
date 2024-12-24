@@ -28,7 +28,6 @@ const SignUpEarlySchema = z.object({
 type SignUpEarlyAccess = z.infer<typeof SignUpEarlySchema>;
 
 export async function action({ request }: ActionFunctionArgs) {
-  console.log('Action function called');
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
 

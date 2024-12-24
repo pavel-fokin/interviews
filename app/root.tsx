@@ -24,11 +24,25 @@ export const links: LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const dev = process.env.NODE_ENV === 'development';
+
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {!dev && (
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-QT40BWKBSZ"></script>
+        )}
+        {!dev && (
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments)}
+            gtag('js', new Date());
+
+            gtag('config', 'G-QT40BWKBSZ');
+          </script>
+        )}
         <Meta />
         <Links />
       </head>

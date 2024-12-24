@@ -13,7 +13,7 @@ body {
 
 @layer components {
   .button {
-    @apply relative px-4 py-2 rounded-lg font-medium text-white bg-slate-800 hover:bg-slate-900 focus:ring-4 focus:ring-slate-300 focus:outline-none active:bg-slate-950 transition-all duration-200 ease-in-out shadow-sm;
+    @apply relative px-4 py-2 rounded-lg font-normal text-white bg-slate-800 hover:bg-slate-900 focus:ring-4 focus:ring-slate-300 focus:outline-none active:bg-slate-950 transition-all duration-200 ease-in-out shadow-sm;
   }
 
   .button.loading::after {
